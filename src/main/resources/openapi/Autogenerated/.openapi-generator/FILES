@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/com/spring/demospring/api/ApiUtil.java
+src/main/java/com/spring/demospring/api/SearchUserApi.java
+src/main/java/com/spring/demospring/api/SearchUserApiController.java
+src/main/java/com/spring/demospring/api/UserApi.java
+src/main/java/com/spring/demospring/api/UserApiController.java
+src/main/java/org/openapitools/OpenAPI2SpringBoot.java
+src/main/java/org/openapitools/RFC3339DateFormat.java
+src/main/java/org/openapitools/configuration/HomeController.java
+src/main/java/org/openapitools/model/ResponseModel.java
+src/main/java/org/openapitools/model/User.java
+src/main/resources/application.properties
+src/main/resources/openapi.yaml

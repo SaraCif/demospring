@@ -1,0 +1,262 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: sara.cifola@gmail.com
+  description: Demo Spring
+  title: Swagger Demo Spring
+  version: 1.0.0
+servers:
+- url: /
+tags:
+- description: Operations about user
+  externalDocs:
+    description: Find out more about our store
+    url: http://swagger.io
+  name: user
+paths:
+  /searchUser:
+    get:
+      operationId: getUser
+      parameters:
+      - description: 'The name that needs to be fetched. Use user1 for testing. '
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'The surname that needs to be fetched. Use user1 for testing. '
+        explode: true
+        in: query
+        name: surname
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+          description: successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+      summary: Get user by parameters
+      tags:
+      - user
+      x-accepts: application/json
+      x-tags:
+      - tag: user
+  /user:
+    post:
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+      summary: Create user
+      tags:
+      - user
+      x-contentType: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: user
+  /user/{id}:
+    delete:
+      operationId: deleteUser
+      parameters:
+      - description: The name that needs to be deleted
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+      summary: Delete user
+      tags:
+      - user
+      x-accepts: application/json
+      x-tags:
+      - tag: user
+    get:
+      operationId: getUserByName
+      parameters:
+      - description: The name that needs to be fetched
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+      summary: Get user by id
+      tags:
+      - user
+      x-accepts: application/json
+      x-tags:
+      - tag: user
+    put:
+      operationId: updateUser
+      parameters:
+      - description: name that need to be updated
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseModel'
+          description: error response
+      summary: Updated user
+      tags:
+      - user
+      x-contentType: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: user
+components:
+  responses:
+    GeneralResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseModel'
+      description: response
+    ErrorResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseModel'
+      description: error response
+  schemas:
+    ResponseModel:
+      example:
+        code: 0
+        message: message
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    Users:
+      items:
+        $ref: '#/components/schemas/User'
+      type: array
+    User:
+      example:
+        password: password
+        address: address
+        surname: surname
+        name: name
+        id: 0
+        email: email
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        address:
+          type: string
+      type: object
