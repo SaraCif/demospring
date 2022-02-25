@@ -27,21 +27,16 @@ public class SearchUserServiceImpl implements SearchUserService {
 	public List<UserModel> searchUsers(String name, String surname) {
 		List<UserEntity> usersEntity = new ArrayList<UserEntity>();
 		List<UserModel> dtos = new ArrayList<>();
-		
-		if (name != null || surname != null) {
-			/*usersEntity = userRep.findByNameOrSurname(name, surname);*/
 
-			UserEntity userExample = new UserEntity();
-			userExample.setName(name);
-			userExample.setSurname(surname);
-			/*ExampleMatcher per escludere nella where gli input null e renderli case insensitive*/
-			ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreNullValues().withIgnoreCase();
-			Example<UserEntity> exampleQuery = Example.of(userExample, matcher);
-			usersEntity = userRep.findAll(exampleQuery);
-			
-		} else {
-			usersEntity = userRep.findAll();
-		}
+		UserEntity userExample = new UserEntity();
+		userExample.setName(name);
+		userExample.setSurname(surname);
+		/*
+		 * ExampleMatcher per escludere nella where gli input null e renderli case insensitive
+		 */
+		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreNullValues().withIgnoreCase();
+		Example<UserEntity> exampleQuery = Example.of(userExample, matcher);
+		usersEntity = userRep.findAll(exampleQuery);
 
 		if (!usersEntity.isEmpty()) {
 			dtos = usersEntity.stream().map(user -> modelMapper.map(user, UserModel.class))
