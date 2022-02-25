@@ -127,7 +127,7 @@ public interface UserApi {
      *         or error response (status code 404)
      */
     @Operation(
-        operationId = "getUserByName",
+        operationId = "getUserById",
         summary = "Get user by id",
         tags = { "user" },
         responses = {
@@ -141,7 +141,7 @@ public interface UserApi {
         value = "/user/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<User> getUserByName(
+    default ResponseEntity<User> getUserById(
         @Parameter(name = "id", description = "The name that needs to be fetched", required = true, schema = @Schema(description = "")) @PathVariable("id") String id
     ) {
         getRequest().ifPresent(request -> {

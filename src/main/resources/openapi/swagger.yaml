@@ -18,7 +18,7 @@ paths:
       - "user"
       summary: "Get user by parameters"
       description: ""
-      operationId: "getUser"
+      operationId: "searchUser"
       parameters:
       - name: "name"
         in: "query"
@@ -64,7 +64,7 @@ paths:
       - "user"
       summary: "Get user by id"
       description: ""
-      operationId: "getUserByName"
+      operationId: "getUserById"
       parameters:
       - name: "id"
         in: "path"

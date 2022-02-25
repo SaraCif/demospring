@@ -6,13 +6,14 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name="USER")
 public class UserEntity implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -20,15 +21,22 @@ public class UserEntity implements Serializable {
 	private Long id;
 	
 	@Column(name="name")
+	@NotBlank
+	@NotEmpty
+	@NotNull
+	@Size(min = 1)
 	private String name;
 
 	@Column(name="surname")
+	@NotNull
 	private String surname;
 
 	@Column(name="email")
+	@NotNull
 	private String email;
 
 	@Column(name="password")
+	@NotNull
 	private String password;
 
 	@Column(name="address")

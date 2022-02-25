@@ -104,7 +104,7 @@ public interface UserApi {
         produces = { "application/json" }
     )
     default ResponseEntity<ResponseModel> deleteUser(
-        @ApiParam(name = "id", required = true) @PathVariable("id") String id
+        @ApiParam(name = "id", required = true) @PathVariable("id") Long id
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -129,7 +129,7 @@ public interface UserApi {
      *         or error response (status code 404)
      */
     @ApiOperation(
-    	value = "getUserByName",
+    	value = "getUserById",
     	notes = "Get user by id",
         tags = { "user" }
     )
@@ -144,8 +144,8 @@ public interface UserApi {
         value = "/user/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<UserModel> getUserByName(
-    		@ApiParam(name = "id", required = true) @PathVariable("id") String id
+    default ResponseEntity<UserModel> getUserById(
+    		@ApiParam(name = "id", required = true) @PathVariable("id") Long id
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -188,7 +188,7 @@ public interface UserApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<ResponseModel> updateUser(
-    	@ApiParam(name = "id", required = true) @PathVariable("id") String id,
+    	@ApiParam(name = "id", required = true) @PathVariable("id") Long id,
     	@ApiParam(name = "User") @Valid @RequestBody UserModel user
     ) {
         getRequest().ifPresent(request -> {

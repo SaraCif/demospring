@@ -1,6 +1,7 @@
 package com.spring.demospring.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -19,5 +20,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
 			  + " or c.surname = :surname)")
 			List<UserEntity> findByNameOrSurname(@Param("name") String name, @Param("surname") String surname);
 	*/
+	
+	Optional<UserEntity> findById(Long id);
 	
 }

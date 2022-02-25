@@ -3,6 +3,11 @@ package com.spring.demospring.dto;
 import java.util.Objects;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,19 +18,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-02-19T18:02:28.634+01:00[Europe/Berlin]")
 public class UserModel   {
-
+	
+	
   @JsonProperty("id")
   private Long id;
-
+  
+  @NotBlank
+  @NotEmpty
+  @Size(min = 1)
   @JsonProperty("name")
   private String name;
 
   @JsonProperty("surname")
   private String surname;
-
+  
   @JsonProperty("email")
   private String email;
-
+  
   @JsonProperty("password")
   private String password;
 
