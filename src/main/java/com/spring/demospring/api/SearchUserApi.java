@@ -5,7 +5,6 @@
  */
 package com.spring.demospring.api;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Generated;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
 
 import com.spring.demospring.dto.ResponseModel;
-import com.spring.demospring.dto.User;
+import com.spring.demospring.dto.UserModel;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,12 +45,12 @@ public interface SearchUserApi {
      *         or error response (status code 404)
      */
     @ApiOperation(
-        value = "getUser",
+        value = "searchUser",
         notes = "Get user by parameters",
         tags = { "user" }
    )
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "successful operation", response = User.class),
+            @ApiResponse(code = 200, message = "successful operation", response = UserModel.class),
             @ApiResponse(code = 400, message = "error response", response =  ResponseModel.class),
             @ApiResponse(code = 404, message = "error response", response =  ResponseModel.class)
         }
@@ -62,7 +61,7 @@ public interface SearchUserApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<List<User>> getUser(
+    default ResponseEntity<?> searchUser(
         @ApiParam(value = "name", required = false) String name,
         @ApiParam(value = "surname", required = false) String surname
     ) {

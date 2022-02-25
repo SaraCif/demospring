@@ -49,7 +49,7 @@ public interface SearchUserApi {
      *         or error response (status code 404)
      */
     @Operation(
-        operationId = "getUser",
+        operationId = "searchUser",
         summary = "Get user by parameters",
         tags = { "user" },
         responses = {
@@ -63,7 +63,7 @@ public interface SearchUserApi {
         value = "/searchUser",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<User>> getUser(
+    default ResponseEntity<List<User>> searchUser(
         @Parameter(name = "name", description = "The name that needs to be fetched. Use user1 for testing. ", schema = @Schema(description = "")) @Valid @RequestParam(value = "name", required = false) String name,
         @Parameter(name = "surname", description = "The surname that needs to be fetched. Use user1 for testing. ", schema = @Schema(description = "")) @Valid @RequestParam(value = "surname", required = false) String surname
     ) {

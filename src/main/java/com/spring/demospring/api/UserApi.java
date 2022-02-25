@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
 
 import com.spring.demospring.dto.ResponseModel;
-import com.spring.demospring.dto.User;
+import com.spring.demospring.dto.UserModel;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -63,7 +63,7 @@ public interface UserApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<ResponseModel> createUser(
-        @ApiParam(value = "User", required = true) @Valid @RequestBody User user
+        @ApiParam(value = "User", required = true) @Valid @RequestBody UserModel user
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -134,7 +134,7 @@ public interface UserApi {
         tags = { "user" }
     )
     @ApiResponses(value = {
-    		@ApiResponse(code = 200, message = "successful operation", response = User.class),
+    		@ApiResponse(code = 200, message = "successful operation", response = UserModel.class),
             @ApiResponse(code = 400, message = "error response", response =  ResponseModel.class),
             @ApiResponse(code = 404, message = "error response", response =  ResponseModel.class)
     	}
@@ -144,7 +144,7 @@ public interface UserApi {
         value = "/user/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<User> getUserByName(
+    default ResponseEntity<UserModel> getUserByName(
     		@ApiParam(name = "id", required = true) @PathVariable("id") String id
     ) {
         getRequest().ifPresent(request -> {
@@ -176,7 +176,7 @@ public interface UserApi {
         tags = { "user" }
     )
     @ApiResponses(value = {
-    		@ApiResponse(code = 200, message = "successful operation", response = User.class),
+    		@ApiResponse(code = 200, message = "successful operation", response = UserModel.class),
             @ApiResponse(code = 400, message = "error response", response =  ResponseModel.class),
             @ApiResponse(code = 404, message = "error response", response =  ResponseModel.class)
     	}
@@ -189,7 +189,7 @@ public interface UserApi {
     )
     default ResponseEntity<ResponseModel> updateUser(
     	@ApiParam(name = "id", required = true) @PathVariable("id") String id,
-    	@ApiParam(name = "User") @Valid @RequestBody User user
+    	@ApiParam(name = "User") @Valid @RequestBody UserModel user
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

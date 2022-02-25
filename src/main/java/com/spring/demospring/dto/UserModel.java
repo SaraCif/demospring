@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-02-19T18:02:28.634+01:00[Europe/Berlin]")
-public class User   {
+public class UserModel   {
 
   @JsonProperty("id")
   private Long id;
@@ -32,7 +32,7 @@ public class User   {
   @JsonProperty("address")
   private String address;
 
-  public User id(Long id) {
+  public UserModel id(Long id) {
     this.id = id;
     return this;
   }
@@ -50,7 +50,7 @@ public class User   {
     this.id = id;
   }
 
-  public User name(String name) {
+  public UserModel name(String name) {
     this.name = name;
     return this;
   }
@@ -68,7 +68,7 @@ public class User   {
     this.name = name;
   }
 
-  public User surname(String surname) {
+  public UserModel surname(String surname) {
     this.surname = surname;
     return this;
   }
@@ -86,7 +86,7 @@ public class User   {
     this.surname = surname;
   }
 
-  public User email(String email) {
+  public UserModel email(String email) {
     this.email = email;
     return this;
   }
@@ -104,7 +104,7 @@ public class User   {
     this.email = email;
   }
 
-  public User password(String password) {
+  public UserModel password(String password) {
     this.password = password;
     return this;
   }
@@ -122,7 +122,7 @@ public class User   {
     this.password = password;
   }
 
-  public User address(String address) {
+  public UserModel address(String address) {
     this.address = address;
     return this;
   }
@@ -148,7 +148,7 @@ public class User   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
+    UserModel user = (UserModel) o;
     return Objects.equals(this.id, user.id) &&
         Objects.equals(this.name, user.name) &&
         Objects.equals(this.surname, user.surname) &&

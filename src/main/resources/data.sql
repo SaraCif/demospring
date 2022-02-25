@@ -3,3 +3,4 @@ INSERT INTO User (id, name, surname, email, password, address) VALUES (2, 'Valen
 INSERT INTO User (id, name, surname, email, password, address) VALUES (3, 'Marco', 'Bianchi', 'marco.bianchi@gmail.com', 'demo', 'via Roma');
 INSERT INTO User (id, name, surname, email, password, address) VALUES (4, 'Andrea', 'Rossi', 'andrea.rossi@gmail.com', 'demo', 'via Ancona');
 INSERT INTO User (id, name, surname, email, password, address) VALUES (5, 'Elena', 'Neri', 'elena.neri@gmail.com', 'demo', 'via Bologna');
+INSERT INTO User (id, name, surname, email, password, address) VALUES (6, 'Sara', 'Bosco', 'sara.bosco@email.com', 'demo', 'via Roma');
